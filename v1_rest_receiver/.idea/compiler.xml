@@ -26,8 +26,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="v1_rest_receiver" target="1.5" />
-      <module name="v1_rest_receiver.core" target="1.5" />
+      <module name="v1_rest_receiver" target="1.8" />
+      <module name="v1_rest_receiver.core" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
