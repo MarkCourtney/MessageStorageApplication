@@ -1,9 +1,10 @@
 package com.receiver;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.config.SimpleJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
@@ -15,17 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.jms.*;
 import java.util.Map;
 
-/**
- * Created by courtneym on 14/08/2015.
- */
 @RestController
 public class JsonController {
 
     @Autowired
-    ConfigurableApplicationContext context;
+    ApplicationContext context;
 
-    // Setup a producer to send a message with JMS
-    // Creates the connectionFactory int
+    @Autowired
+    JmsSender jmsSender;
+
     @Bean
     JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {
         SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
@@ -37,13 +36,9 @@ public class JsonController {
     // Json message will be sent here with POST request
     // Send that message onward to a JMS consumer
     @RequestMapping(value = "/json", method = RequestMethod.POST)
-    public void sendRequest(@RequestBody Map person) {
-        sendJmsMessage("jms-receiver", person);
-    }
-
-    private void sendJmsMessage(String destination, Map map) {
-        JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-        jmsTemplate.convertAndSend(destination, map);
+    public void receiveJson(@RequestBody Map person) {
+        jmsSender.sendJmsMessage(person);
+        System.out.println("Sending map");
     }
 
     /*

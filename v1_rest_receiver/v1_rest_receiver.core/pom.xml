@@ -6,8 +6,8 @@
     <artifactId>rest-receiver.core</artifactId>
     <packaging>jar</packaging>
 
-    <name>rest_receiver</name>
-    <description>Project for rest service that accepts JSON requests and send data to a JMS queue</description>
+    <name>rest_receiver.core</name>
+    <description>Rest service that accepts JSON requests and send data to a JMS queue</description>
 
     <parent>
         <groupId>com.receiver</groupId>
@@ -26,17 +26,13 @@
             <version>2.5</version>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-broker</artifactId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.2.0</version>
         </dependency>
     </dependencies>
 
