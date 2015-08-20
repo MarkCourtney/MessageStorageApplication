@@ -8,7 +8,7 @@
         <property name="brokerURL" value="tcp://localhost:61616"/>
     </bean>
 
-    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+    <bean id="message-destination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg value="message.queue"/>
     </bean>
 </beans>

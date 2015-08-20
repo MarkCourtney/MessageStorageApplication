@@ -10,12 +10,12 @@
           class="org.apache.activemq.ActiveMQConnectionFactory"
           p:brokerURL="tcp://localhost:61616" />
 
-    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+    <bean id="message-destination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg value="message.queue"/>
     </bean>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="defaultDestination" ref="destination"/>
+        <property name="defaultDestination" ref="message-destination"/>
     </bean>
 </beans>
