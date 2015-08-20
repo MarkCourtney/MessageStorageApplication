@@ -20,5 +20,6 @@ public class JmsReceiver {
     public void onMessage(Map message) {
         logger.info("Message Received. Attempting to insert record");
         Boolean inserted = mongoDB.insertRecord(message);
+        logger.info("Correctly inserted: " + inserted);
     }
 }
