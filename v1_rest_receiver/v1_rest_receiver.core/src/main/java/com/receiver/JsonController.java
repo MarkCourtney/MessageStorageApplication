@@ -29,51 +29,9 @@ public class JsonController {
         return factory;
     }
 
-    // Endpoint /json
-    // Json message will be sent here with POST request
-    // Send that message onward to a JMS consumer
+    // Receives a Json message and sends onto a JMS consumer
     @RequestMapping(value = "/json", method = RequestMethod.POST)
     public void receiveJson(@RequestBody Map person) {
         jmsSender.sendJmsMessage(person);
-        System.out.println("Sending map");
     }
-
-    /*
-    // Boiler plate code for producing a map message over JMS
-    // Spring boot above speeds this up
-    public void run(Map map) {
-        try {
-            // Create a ConnectionFactory
-            // Active MQ software wasn't running, thats why it wasn't working
-            ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("jms://localhost:8080");
-
-            // Create a Connection
-            Connection connection = connectionFactory.createConnection();
-            connection.start();
-
-            // Create a Session
-            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-
-            // Create the destination (Topic or Queue)
-            Destination destination = session.createQueue("/json");
-
-            // Create a MessageProducer from the Session to the Topic or Queue
-            MessageProducer producer = session.createProducer(destination);
-            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-
-            // Create a map message
-            MapMessage mapMessage = session.createMapMessage();
-            mapMessage.setObject("PersonMap", map);
-            System.out.println("Sending this object " + mapMessage);
-            producer.send(mapMessage);
-
-            // Clean up
-            session.close();
-            connection.close();
-        }
-        catch (Exception e) {
-            System.out.println("Caught: " + e);
-            e.printStackTrace();
-        }
-    }*/
 }

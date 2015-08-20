@@ -22,7 +22,7 @@ public class MongoDB {
             logger.info("Inserted record : " + message);
             return true;
         } catch (Exception e) {
-            logger.error("Couldn't insert into DB. " + e.getLocalizedMessage());
+            logger.error("Couldn't insert into DB. " + e.getMessage());
             return false;
         }
    }

@@ -14,6 +14,9 @@ public class JmsReceiver {
     @Autowired
     MongoDB mongoDB;
 
+    @Autowired
+    JmsSender jmsSender;
+
     private static final Logger logger = LoggerFactory.getLogger(JmsReceiver.class);
 
     @JmsListener(destination = "message.queue")
@@ -21,5 +24,7 @@ public class JmsReceiver {
         logger.info("Message Received. Attempting to insert record");
         Boolean inserted = mongoDB.insertRecord(message);
         logger.info("Correctly inserted: " + inserted);
+        logger.info("Sending Jms message to AMQP for consumption");
+        jmsSender.sendJmsMessage(inserted);
     }
 }

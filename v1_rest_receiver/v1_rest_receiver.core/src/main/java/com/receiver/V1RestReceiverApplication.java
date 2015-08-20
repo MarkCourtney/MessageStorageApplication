@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("producer.xml")
+@ImportResource("message-producer.xml")
 public class V1RestReceiverApplication {
 
     public static void main(String[] args) {
