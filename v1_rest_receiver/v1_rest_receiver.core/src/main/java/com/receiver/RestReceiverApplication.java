@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("message-producer.xml")
-public class V1RestReceiverApplication {
+@ImportResource("jms-message-producer.xml")
+public class RestReceiverApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(V1RestReceiverApplication.class, args);
+        SpringApplication.run(RestReceiverApplication.class, args);
     }
 }

@@ -9,11 +9,6 @@
     </bean>
 
     <bean id="insert-status-destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg value="insert-status.queue"/>
-    </bean>
-
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="defaultDestination" ref="insert-status-destination"/>
+        <constructor-arg value="status.queue"/>
     </bean>
 </beans>
