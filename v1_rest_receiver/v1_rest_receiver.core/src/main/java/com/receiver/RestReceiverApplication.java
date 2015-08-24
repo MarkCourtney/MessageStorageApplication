@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication
 @ImportResource("jms-message-producer.xml")
 public class RestReceiverApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(RestReceiverApplication.class, args);
     }

@@ -1,6 +1,5 @@
 package com.receiver;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jms.config.JmsListenerContainerFactory;
@@ -10,17 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
 import java.util.Map;
 
 @RestController
 public class JsonController {
 
-    @Autowired
-    ApplicationContext context;
+    private ApplicationContext context;
+    private JmsSender jmsSender;
 
-    @Autowired
-    JmsSender jmsSender;
+    @Inject
+    public JsonController(ApplicationContext context, JmsSender jmsSender) {
+        this.context = context;
+        this.jmsSender = jmsSender;
+    }
 
     @Bean
     JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {
@@ -30,7 +33,7 @@ public class JsonController {
     }
 
     // Receives a Json message and sends onto a JMS consumer
-    @RequestMapping(value = "/json", method = RequestMethod.POST)
+    @RequestMapping(value = "/payload", method = RequestMethod.POST)
     public void receiveJson(@RequestBody Map person) {
         jmsSender.sendJmsMessage(person);
     }

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource({"jms-message-consumer.xml", "jms-status-producer.xml"})
+@ImportResource("jms-message-consumer.xml")
 public class UnstructuredStorageApplication {
 
     public static void main(String[] args) {
