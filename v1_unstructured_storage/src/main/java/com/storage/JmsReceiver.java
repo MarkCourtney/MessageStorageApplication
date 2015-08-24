@@ -15,13 +15,13 @@ import java.util.Map;
 @Component
 public class JmsReceiver {
 
-    @Inject
-    MongoDB mongoDB;
-
-    @Inject
-    AmqpSender amqpSender;
-
     private static Logger log = LogManager.getLogger(JmsReceiver.class.getName());
+
+    @Inject
+    private MongoDB mongoDB;
+
+    @Inject
+    private AmqpSender amqpSender;
 
     @Bean
     JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {

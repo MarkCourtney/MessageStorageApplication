@@ -4,8 +4,8 @@
               <Property name="log-path">C:/Software/Logs</Property>
        </Properties>
        <Appenders>
-              <RollingFile name="RollingFile" fileName="${log-path}/DataManipulation.log"
-                           filePattern="${log-path}/DataManipulation-%d{yyyy-MM-dd}-%i.log" >
+              <RollingFile name="RollingFile" fileName="${log-path}/myexample.log"
+                           filePattern="${log-path}/myexample-%d{yyyy-MM-dd}-%i.log" >
                      <PatternLayout>
                             <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
                      </PatternLayout>

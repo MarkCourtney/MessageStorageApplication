@@ -1,5 +1,7 @@
 package com.storage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -8,6 +10,8 @@ import java.util.Map;
 @Component
 public class MongoDB {
 
+    private static Logger log = LogManager.getLogger(MongoDB.class.getName());
+
     @Inject
     private JsonRepository jsonRepository;
 
@@ -15,10 +19,10 @@ public class MongoDB {
         // Report if there's issues with the MongoDB (timeouts, CRUD fails)
         try {
             jsonRepository.insert(message);
-            System.out.println("INSERTED record : " + message);
+            log.debug("INSERTED record : " + message);
             return true;
         } catch (Exception e) {
-            System.out.println("Couldn't insert into DB. " + e.getMessage());
+            log.debug("Couldn't insert into DB. " + e.getMessage());
             return false;
         }
     }

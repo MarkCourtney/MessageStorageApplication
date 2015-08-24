@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
 import java.util.Map;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 @RestController
 public class JsonController {
-
-    static Logger log = LogManager.getLogger(JsonController.class.getName());
 
     private ApplicationContext context;
     private JmsSender jmsSender;
@@ -31,7 +27,7 @@ public class JsonController {
     }
 
     @Bean
-    JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {
+    private JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {
         SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         return factory;
@@ -40,7 +36,6 @@ public class JsonController {
     // Receives a Json message and sends onto a JMS consumer
     @RequestMapping(value = "/payload", method = RequestMethod.POST)
     public void receiveJson(@RequestBody Map person) {
-        log.debug("Sending message");
         jmsSender.sendJmsMessage(person);
     }
 }
