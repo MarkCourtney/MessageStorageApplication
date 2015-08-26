@@ -10,6 +10,7 @@ import java.util.Map;
 
 @Component
 public class JmsSender {
+
     @Inject
     private JmsTemplate template;
 
@@ -17,10 +18,9 @@ public class JmsSender {
 
     public void sendJmsMessage(Map message) {
         try {
-            log.debug("Sending map with JMS message");
             template.convertAndSend(message);
         } catch (Exception e) {
-            log.error("Message could not be sent with ActiveMQ. " + e.getMessage());
+            log.debug("Message could not be sent with ActiveMQ. " + e.getMessage());
         }
     }
 }
