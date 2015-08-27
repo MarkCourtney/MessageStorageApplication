@@ -11,12 +11,20 @@ import java.util.Map;
 @Component
 public class JmsSender {
 
-    @Inject
     private JmsTemplate template;
+
+    public JmsTemplate getTemplate() {
+        return template;
+    }
+
+    @Inject
+    public JmsSender(JmsTemplate template) {
+        this.template = template;
+    }
 
     private static Logger log = LogManager.getLogger(JmsSender.class.getName());
 
-    public void sendJmsMessage(Map message) {
+    public void sendJmsMessage(Map<String, String> message) {
         try {
             template.convertAndSend(message);
         } catch (Exception e) {

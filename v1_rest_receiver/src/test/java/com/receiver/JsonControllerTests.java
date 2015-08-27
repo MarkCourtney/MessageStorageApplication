@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = "classpath:jms-message-producer.xml")
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class JsonControllerTests {
 
     @Autowired
@@ -28,21 +27,18 @@ public class JsonControllerTests {
     @Autowired
     private JmsSender jmsSender;
 
-    private JsonController jsonController;
-
     private MockMvc mockMvc;
-
-    private JSONObject jsonObject;
-    private String jsonString;
 
     @Before
     public void setup() {
-        jsonController = new JsonController(webApplicationContext, jmsSender);
+        JsonController jsonController = new JsonController(jmsSender);
         mockMvc = MockMvcBuilders.standaloneSetup(jsonController).build();
     }
 
     @Test
     public void requestWithCorrectData() throws Exception {
+        JSONObject jsonObject;
+
         jsonObject = new JSONObject();
         jsonObject.put("firstName", "Mark");
         postJson(jsonObject);
@@ -59,11 +55,11 @@ public class JsonControllerTests {
 
     @Test
     public void requestWithMalformedData() throws Exception {
-        jsonString = new String("{\'firstName\':\'John\'}");
-        postJson(jsonString);
+        postJson("{\'firstName\':\'John\'}");
 
-        jsonString = new String("{firstName:John}");
-        postJson(jsonString);
+        postJson("{firstName:John}");
+
+        postJson("");
     }
 
     public void postJson(JSONObject jsonObject) throws Exception {

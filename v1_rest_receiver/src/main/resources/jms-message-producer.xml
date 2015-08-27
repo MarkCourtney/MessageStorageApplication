@@ -4,22 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="JmsSender" class="com.receiver.JmsSender"/>
-
-    <bean id="jsonListener" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
-        <property name="connectionFactory" ref="connectionFactory"/>
-    </bean>
-
-    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL" value="tcp://localhost:61616"/>
-    </bean>
-
-    <bean id="message-destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg value="message.queue"/>
-    </bean>
+    <bean id="jmsSender" class="com.receiver.JmsSender"/>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="defaultDestination" ref="message-destination"/>
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="defaultDestination" ref="messageDestination"/>
+    </bean>
+
+    <bean id="jsonListener" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
     </bean>
 </beans>

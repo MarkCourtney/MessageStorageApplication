@@ -12,7 +12,6 @@ public class MongoDB {
 
     private static Logger log = LogManager.getLogger(MongoDB.class.getName());
 
-    @Inject
     private JsonRepository jsonRepository;
 
     public boolean insertRecord(Map message) {

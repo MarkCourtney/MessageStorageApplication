@@ -17,25 +17,20 @@ public class JmsReceiver {
 
     private static Logger log = LogManager.getLogger(JmsReceiver.class.getName());
 
-    @Inject
     private MongoDB mongoDB;
-
-    @Inject
     private AmqpSender amqpSender;
 
-    @Bean
-    JmsListenerContainerFactory<?> jsonListener(ConnectionFactory connectionFactory) {
-        SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
-        return factory;
+    @Inject
+    public JmsReceiver(MongoDB mongoDB, AmqpSender amqpSender) {
+        this.mongoDB = mongoDB;
+        this.amqpSender = amqpSender;
     }
 
     @JmsListener(destination = "message.queue")
     public void onMessage(Map message) {
+        System.out.println("Hits");
         log.debug("Message Received. Attempting to insert record");
         boolean inserted = mongoDB.insertRecord(message);
-//        logger.info("Correctly inserted: " + inserted);
-//        logger.info("Sending Jms message to AMQP for consumption");
 //        amqpSender.sendAmqpMessage(inserted);
     }
 }

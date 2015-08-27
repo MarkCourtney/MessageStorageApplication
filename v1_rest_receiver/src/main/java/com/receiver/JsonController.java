@@ -12,12 +12,10 @@ import java.util.Map;
 @RestController
 public class JsonController {
 
-    private ApplicationContext context;
     private JmsSender jmsSender;
 
     @Inject
-    public JsonController(ApplicationContext context, JmsSender jmsSender) {
-        this.context = context;
+    public JsonController(JmsSender jmsSender) {
         this.jmsSender = jmsSender;
     }
 
