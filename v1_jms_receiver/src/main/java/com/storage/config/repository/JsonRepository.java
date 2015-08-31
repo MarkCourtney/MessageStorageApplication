@@ -1,4 +1,4 @@
-package com.storage;
+package com.storage.config.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -9,7 +9,7 @@
         <constructor-arg value="message.queue"/>
     </bean>
 
-       <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-              <property name="brokerURL" value="tcp://localhost:61616"/>
-       </bean>
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
 </beans>

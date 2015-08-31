@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:mockApplicationContext.xml")
+@ContextConfiguration(locations = "classpath:applicationContext-mock.xml")
 public class JmsSenderTests {
 
     private JmsSender jmsSender;
