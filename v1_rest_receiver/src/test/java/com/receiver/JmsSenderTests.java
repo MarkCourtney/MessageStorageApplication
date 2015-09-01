@@ -55,7 +55,7 @@ public class JmsSenderTests {
 
         map = new LinkedHashMap<String, String>();
         map.put("firstName", "Mark");
-        Map<String, String> emptyMap = new LinkedHashMap<>();
+        Map<String, String> emptyMap = new LinkedHashMap<String, String>();
         jmsSender.sendJmsMessage(map);
         jmsSender.sendJmsMessage(emptyMap);
 

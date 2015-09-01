@@ -16,14 +16,14 @@ public class MongoDB {
         this.jsonRepository = jsonRepository;
     }
 
-    public boolean insertRecord(Map<String, String> message) {
+    public String insertRecord(Map<String, String> message) {
         // Report if there's issues with the MongoDB (timeouts, CRUD fails)
         try {
             jsonRepository.insert(message);
             System.out.println("INSERT Map worked");
-            return true;
+            return String.valueOf(true);
         } catch (Exception e) {
-            return false;
+            return String.valueOf(false);
         }
     }
 }

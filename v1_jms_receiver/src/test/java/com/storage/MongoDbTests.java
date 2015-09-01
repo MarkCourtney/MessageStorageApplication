@@ -44,10 +44,10 @@ public class MongoDbTests {
 
         Map<String, String> map = null;
 
-        boolean insert = mongoDB.insertRecord(map);
-
+        String insert = mongoDB.insertRecord(map);
+        System.out.println("INSERT string " + insert);
         Assert.isTrue(jsonRepository.count() == 0);
-        Assert.isTrue(!insert);
+        Assert.isTrue(insert.equals("false"));
     }
 
     private void insertRecords(int totalRecords) {

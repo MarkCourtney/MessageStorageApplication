@@ -15,10 +15,14 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.2.5.RELEASE</version>
-        <relativePath/>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.1.7.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -29,6 +33,11 @@
             <artifactId>log4j-core</artifactId>
             <version>2.3</version>
         </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies>
 
 	<properties>
@@ -38,7 +47,7 @@
 
 	<modules>
 		<module>v1_rest_receiver</module>
-		<module>v1_unstructured_storage</module>
-		<module>v1_structured_storage</module>
+		<module>v1_jms_receiver</module>
+		<module>v1_amqp_receiver</module>
 	</modules>
 </project>

@@ -20,7 +20,9 @@ public class JmsReceiver {
 
     @JmsListener(destination = "message.queue")
     public void onMessage(Map message) {
-        boolean inserted = mongoDB.insertRecord(message);
-//        amqpSender.sendAmqpMessage(inserted);
+        String inserted = mongoDB.insertRecord(message);
+        System.out.println("INSERT");
+        amqpSender.sendAmqpMessage(inserted);
+        System.out.println("Send AMQP");
     }
 }

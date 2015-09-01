@@ -6,9 +6,9 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource("applicationContext.xml")
-public class UnstructuredStorageApplication {
+public class JmsStorageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UnstructuredStorageApplication.class, args);
+        SpringApplication.run(JmsStorageApplication.class, args);
     }
 }
