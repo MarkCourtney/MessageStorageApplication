@@ -1,7 +1,7 @@
-package com.storage;
+package com.jms;
 
-import com.storage.config.MongoDbTestConfig;
-import com.storage.config.repository.JsonRepository;
+import com.jms.config.MongoDbTestConfig;
+import com.jms.config.repository.JsonRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

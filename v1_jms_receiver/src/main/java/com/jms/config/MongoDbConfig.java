@@ -1,4 +1,4 @@
-package com.storage.config;
+package com.jms.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
@@ -23,6 +23,6 @@ public class MongoDbConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getMappingBasePackage() {
-        return "com.storage";
+        return "com.jms";
     }
 }

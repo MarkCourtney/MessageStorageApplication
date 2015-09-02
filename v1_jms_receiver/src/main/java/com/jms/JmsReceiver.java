@@ -1,5 +1,7 @@
-package com.storage;
+package com.jms;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +10,8 @@ import java.util.Map;
 
 @Component
 public class JmsReceiver {
+
+    private static Logger log = LogManager.getLogger(JmsReceiver.class.getName());
 
     private MongoDB mongoDB;
     private AmqpSender amqpSender;
@@ -21,8 +25,6 @@ public class JmsReceiver {
     @JmsListener(destination = "message.queue")
     public void onMessage(Map message) {
         String inserted = mongoDB.insertRecord(message);
-        System.out.println("INSERT");
         amqpSender.sendAmqpMessage(inserted);
-        System.out.println("Send AMQP");
     }
 }

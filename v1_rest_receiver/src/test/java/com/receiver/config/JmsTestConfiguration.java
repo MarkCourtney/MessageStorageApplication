@@ -39,20 +39,23 @@ public class JmsTestConfiguration {
         return new MockQueueConnectionFactory(destinationManager(), configurationManager());
     }
 
-//    <bean id="destinationManager" class="com.mockrunner.jms.DestinationManager"/>
-//    <bean id="configurationManager" class="com.mockrunner.jms.ConfigurationManager"/>
-//
-//    <bean id="messageDestination" factory-bean="destinationManager" factory-method="createQueue">
-//      <constructor-arg value="message.queue"/>
-//    </bean>
-//
-//    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-//    <property name="connectionFactory" ref="jmsConnectionFactory"/>
-//    <property name="defaultDestination" ref="messageDestination"/>
-//    </bean>
-//
-//    <bean id="jmsConnectionFactory" class="com.mockrunner.mock.jms.MockQueueConnectionFactory" >
-//      <constructor-arg ref="destinationManager" />
-//      <constructor-arg ref="configurationManager" />
-//    </bean>
+    // Equivalent XML Config
+    /*
+    <bean id="destinationManager" class="com.mockrunner.jms.DestinationManager"/>
+    <bean id="configurationManager" class="com.mockrunner.jms.ConfigurationManager"/>
+
+    <bean id="messageDestination" factory-bean="destinationManager" factory-method="createQueue">
+      <constructor-arg value="message.queue"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    <property name="defaultDestination" ref="messageDestination"/>
+    </bean>
+
+    <bean id="jmsConnectionFactory" class="com.mockrunner.mock.jms.MockQueueConnectionFactory" >
+      <constructor-arg ref="destinationManager" />
+      <constructor-arg ref="configurationManager" />
+    </bean>
+    */
 }

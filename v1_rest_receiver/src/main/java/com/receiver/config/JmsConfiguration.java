@@ -29,25 +29,19 @@ public class JmsConfiguration {
         return jmsTemplate;
     }
 
-//    @Bean
-//    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, Queue amqpQueue, MessageListenerAdapter listenerAdapter) {
-//        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-//        container.setConnectionFactory(connectionFactory);
-//        container.setQueues(amqpQueue);
-//        container.setMessageListener(listenerAdapter);
-//        return container;
-//    }
+    // Equivalent XML Config
+    /*
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    <property name="defaultDestination" ref="messageDestination"/>
+    </bean>
 
-//    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-//    <property name="connectionFactory" ref="jmsConnectionFactory"/>
-//    <property name="defaultDestination" ref="messageDestination"/>
-//    </bean>
+    <bean id="messageDestination" class="org.apache.activemq.command.ActiveMQQueue">
+    <constructor-arg value="message.queue"/>
+    </bean>
 
-//    <bean id="messageDestination" class="org.apache.activemq.command.ActiveMQQueue">
-//    <constructor-arg value="message.queue"/>
-//    </bean>
-//
-//    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-//    <property name="brokerURL" value="tcp://localhost:61616"/>
-//    </bean>
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+    */
 }

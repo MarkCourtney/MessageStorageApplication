@@ -1,4 +1,4 @@
-package com.storage.config;
+package com.jms.config;
 
 import com.github.fakemongo.Fongo;
 import com.mongodb.Mongo;

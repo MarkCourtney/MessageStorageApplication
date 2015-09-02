@@ -1,4 +1,4 @@
-package com.storage.config.repository;
+package com.jms.config.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

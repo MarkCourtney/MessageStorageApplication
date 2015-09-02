@@ -13,5 +13,5 @@
               <rabbit:listener ref="amqpReceiver" method="onMessage" queue-names="status.queue" />
        </rabbit:listener-container>
 
-       <bean id="amqpReceiver" class="com.storage.AmqpReceiver" />
+       <bean id="amqpReceiver" class="com.amqp.AmqpReceiver" />
 </beans>

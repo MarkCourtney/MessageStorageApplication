@@ -1,6 +1,6 @@
-package com.storage.config;
+package com.amqp.config;
 
-import com.storage.AmqpReceiver;
+import com.amqp.AmqpReceiver;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;

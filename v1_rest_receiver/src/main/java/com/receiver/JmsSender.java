@@ -23,7 +23,7 @@ public class JmsSender {
     public void sendJmsMessage(Map<String, String> message) {
         try {
             template.convertAndSend(message);
-            log.info("Sent JMS message");
+            log.info("Sending JMS message");
         } catch (Exception e) {
             log.info("Message could not be sent with ActiveMQ. " + e.getMessage());
         }

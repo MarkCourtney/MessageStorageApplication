@@ -1,4 +1,4 @@
-package com.storage;
+package com.jms;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +18,7 @@ public class AmqpSender {
     public void sendAmqpMessage(String status) {
         try {
             template.convertAndSend(status);
-            log.info("Sent AMQP message");
+            log.info("Sending AMQP message with status: " + status);
         } catch (Exception e) {
             log.info("Message could not be sent with RabbitMQ. " + e.getMessage());
         }
