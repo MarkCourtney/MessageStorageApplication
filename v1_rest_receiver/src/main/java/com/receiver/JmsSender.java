@@ -13,10 +13,6 @@ public class JmsSender {
 
     private JmsTemplate template;
 
-    public JmsTemplate getTemplate() {
-        return template;
-    }
-
     @Inject
     public JmsSender(JmsTemplate template) {
         this.template = template;

@@ -2,6 +2,7 @@ package com.receiver;
 
 import com.mockrunner.mock.jms.MockMapMessage;
 import com.mockrunner.mock.jms.MockQueue;
+import com.receiver.config.JmsTestConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext-mock.xml")
+@ContextConfiguration(classes = JmsTestConfiguration.class)
 public class JmsSenderTests {
 
     private JmsSender jmsSender;
@@ -72,7 +73,7 @@ public class JmsSenderTests {
     }
 
     private Map<String, String> getQueueMap() {
-        MockMapMessage mockMapMessage = (MockMapMessage) jmsSender.getTemplate().receive(messageDestination);
+        MockMapMessage mockMapMessage = (MockMapMessage) jmsTemplate.receive(messageDestination);
         return mockMapMessage.getMap();
     }
 }

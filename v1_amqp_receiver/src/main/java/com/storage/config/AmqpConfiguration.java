@@ -21,7 +21,7 @@ public class AmqpConfiguration {
 		connectionFactory.setPassword("guest");
 		return connectionFactory;
 	}
-
+	
 	@Bean
 	public AmqpAdmin amqpAdmin() {
 		return new RabbitAdmin(connectionFactory());

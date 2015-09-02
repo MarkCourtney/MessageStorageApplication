@@ -7,5 +7,6 @@ public class AmqpReceiver {
 
     public void receiveMessage(String status) {
         //TODO postgres INSERT
+        System.out.println(status);
     }
 }
